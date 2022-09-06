@@ -9,19 +9,20 @@ class Stack:
     self.head = None
 
   def push(self, data) -> None:
-    struct Node* newnode = (struct Node*) malloc(sizeof(struct Node))
-    newnode.data = val
-    newnode.next = top
-    top = newnode
+    if self.head is None:
+        self.head = Node(data)
+    else:
+        new_node = Node(data)
+        new_node.next = self.head
+        self.head = new_node
     
   def pop(self) -> None:
-    if(top==NULL):
-        print("Stack Underflow")
+    if self.head is None:
+        return None
     else:
-        struct Node* temp = top
-        print("The popped element is ", top.data)
-        top = top.next
-        free (temp)
+        popped = self.head.data
+        self.head = self.head.next
+        return popped
   
   def status(self):
     struct Node* ptr
