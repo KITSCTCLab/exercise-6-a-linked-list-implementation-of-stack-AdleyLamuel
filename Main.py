@@ -2,39 +2,46 @@ class Node:
   def __init__(self, data):
     self.data = data
     self.next = None
-
+#     self.top=None
 
 class Stack:
   def __init__(self):
-    self.head = None
-
+    self.top = None
+    #self.top=None
   def push(self, data) -> None:
-    if self.head is None:
-        self.head = Node(data)
-    else:
-        new_node = Node(data)
-        new_node.next = self.head
-        self.head = new_node
-    
+    # Write your code here
+    new=Node(data)
+    new.data=data
+    new.next=self.top
+    self.top=new
   def pop(self) -> None:
-    if self.head is None:
-        return None
+    # Write your code here
+    if self.top==None:
+      return None
     else:
-        popped = self.head.data
-        self.head = self.head.next
-        return popped
-  
+      #temp=Node(data)
+      temp=self.top
+      self.top=self.top.next
+      temp.next=None
+      return temp
+      
+      
   def status(self):
-    struct Node* ptr
-    if(top==NULL):
-        cout<<"stack is empty";
-    else: 
-        ptr = top
-    print("Stack elements are: ")
-    while (ptr != NULL):
-      print(ptr.data, " ")
-      ptr = ptr->next
-
+    """
+    It prints all the elements of stack.
+    """
+    # Write your code here  
+    if self.top==None:
+      print("None")
+    else:
+      #ptr=Node(data)
+      ptr=self.top
+      while(ptr!=None):
+        print(ptr.data,end="")
+        print("=>",end="")
+        ptr=ptr.next
+        if(ptr==None):
+          print("None")
 # Do not change the following code
 stack = Stack()
 operations = []
